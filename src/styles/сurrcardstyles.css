@@ -1,0 +1,78 @@
+.curwrapper {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curr-card-info {
+    background-color: #fbeeff;
+    margin-top: 14vh;
+    color: black;
+    border-radius: 1rem; /* закругленные углы */
+    overflow: hidden;
+    width: 80vw; /* ширина в процентах от экрана */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.curr-card-info .card-image {
+    width: 100%; /* занимает всю ширину карточки */
+    height: 30vh; /* высота в процентах от высоты экрана */
+    max-height: 12rem; /* ограничиваем максимальную высоту */
+    object-fit: cover; /* обрезка картинки для заполнения */
+}
+
+.curr-card-info .card-content {
+    padding: 1.5rem; /* внутренние отступы */
+}
+
+.curr-card-info .card-title {
+    font-size: 1.5rem; /* размер заголовка */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-decoration: none;
+
+}
+
+.curr-card-info .card-content p {
+    margin: 1rem 0;
+    font-size: 1.2rem; /* текст размером в rem */
+    color: #555;
+    text-decoration: none;
+}
+
+.curr-card-info .card-content strong {
+    margin: 1rem 0;
+    font-size: 1.2rem; /* текст размером в rem */
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1.5rem; /* внутренние отступы */
+}
+
+.buttons button {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.buttons .bin {
+    border: 2px solid #EE79C0;
+}
+
+.buttons .pen {
+    border: 2px solid #0077FF;
+}
+
+.buttons button img {
+    margin-right: 0.5rem;
+}

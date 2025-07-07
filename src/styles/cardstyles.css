@@ -1,0 +1,113 @@
+/* src/styles/cardstyles.css */
+
+.card {
+  background-color: #dad7cd;
+  color: #000;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 25rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 48vh;
+}
+
+.card:hover {
+  background-color: #a3b18a;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.4);
+}
+
+.card-image {
+  width: 100%;
+  height: 20vh;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 1rem;
+  flex: 1;
+  overflow: auto;
+}
+
+.add-btn {
+  margin: 1rem;
+  align-self: stretch;
+  padding: 0.75rem 1rem;
+  background-color: #a3b18a;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #8f9c6f;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vh;
+  width: 100%;
+  justify-items: center;
+  margin-top: 14vh;
+}
+
+.card-list p {
+  font-size: large;
+  font-weight: bold;
+}
+
+.remove-btn {
+  align-self: stretch;      /* тянем на всю ширину контейнера */
+  margin-top: 1rem;         /* отступ сверху */
+  padding: 0.75rem 1rem;    /* внутренние отступы */
+  background-color: #f07859;
+  margin: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;   /* чтобы padding учитывался */
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+}
+
+@media (max-width: 1000px) {
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    align-items: center;
+    margin-top: 14vh;
+    width: 100vw;
+  }
+}

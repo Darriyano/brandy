@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+@font-face {
+    font-family: 'VK Sans Display';
+    src: url('./fonts/VK-Sans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Использование шрифта в проекте */
+body {
+    font-family: 'VK Sans Display', sans-serif;
+}
