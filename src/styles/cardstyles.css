@@ -1,7 +1,7 @@
 /* src/styles/cardstyles.css */
 
 .card {
-  background-color: #dad7cd;
+  background-color: #ffffff;
   color: #000;
   border-radius: 1rem;
   box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
@@ -11,12 +11,14 @@
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  height: 48vh;
+  height: 42vh;
+  padding-top: 24px;
+padding-bottom: 24px;
 }
 
 .card:hover {
-  background-color: #a3b18a;
-  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.4);
+  background-color: #d3d9f1;
+  box-shadow: 0 0.4rem 0.8rem rgba(28, 22, 92, 0.4);
 }
 
 .card-image {
@@ -36,14 +38,14 @@
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 0 0 1rem;
 }
 
 .card-description {
-  font-size: 1rem;
-  color: #555;
+  font-size: 0.95rem;
+  color: #5e5e5e;
   margin: 0 0 1rem;
   flex: 1;
   overflow: auto;
@@ -53,7 +55,7 @@
   margin: 1rem;
   align-self: stretch;
   padding: 0.75rem 1rem;
-  background-color: #a3b18a;
+  background-color: #677bea;
   color: #fff;
   border: none;
   border-radius: 1rem;
@@ -64,7 +66,7 @@
 }
 
 .add-btn:hover {
-  background-color: #8f9c6f;
+  background-color: #683fc1;
 }
 
 .card-list {
