@@ -5,13 +5,14 @@ import Card, { CardProps } from "../components/card";
 import "../styles/cardstyles.css";
 
 const FAVORITES_KEY = "favorites";
+const DUMMY_CARDS_KEY = "dummyCards"; // Новый ключ для хранения данных из dummyjson
 
 const MainPage: React.FC = () => {
   const [items, setItems] = useState<CardProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // загружаем данные из dummyjson
+  // Загружаем данные из dummyjson
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,6 +26,10 @@ const MainPage: React.FC = () => {
             images: string[];
           }>;
         };
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem(DUMMY_CARDS_KEY, JSON.stringify(products));
+
         setItems(
           products.map((p) => ({
             id: p.id,

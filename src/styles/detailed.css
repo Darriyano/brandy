@@ -1,0 +1,60 @@
+/* src/styles/cardDetailStyles.css */
+
+.card-detail {
+  max-width: 800px;
+  margin: 7rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.card-detail h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.card-detail .card-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+}
+
+.card-detail p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.card-detail .date {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.card-detail .back-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  background-color: #4c56af;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-detail .back-btn:hover {
+  background-color: #2e388b;
+}
