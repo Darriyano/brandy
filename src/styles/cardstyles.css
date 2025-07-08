@@ -14,6 +14,8 @@
   height: 42vh;
   padding-top: 24px;
 padding-bottom: 24px;
+  text-decoration: none;  /* Убирает подчеркивание у ссылки */
+
 }
 
 .card:hover {
@@ -35,11 +37,18 @@ padding-bottom: 24px;
   flex: 1;
   padding: 1.5rem;
   box-sizing: border-box;
+  text-decoration: none;  /* Убирает подчеркивание у ссылки */
+
+}
+
+a {
+  text-decoration: none;  /* Убирает подчеркивание у всех ссылок */
 }
 
 .card-title {
   font-size: 1.3rem;
   font-weight: bold;
+    text-decoration: none;  /* Убирает подчеркивание у ссылки */
   margin: 0 0 1rem;
 }
 
@@ -47,6 +56,7 @@ padding-bottom: 24px;
   font-size: 0.95rem;
   color: #5e5e5e;
   margin: 0 0 1rem;
+  text-decoration: none;  /* Убирает подчеркивание у ссылки */
   flex: 1;
   overflow: auto;
 }

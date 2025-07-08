@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "../pages/main-page";
 import AboutUs from "../pages/about-us";
 import FavoritesPage from "../pages/favs";
+import CreateCard from "../pages/addition";
+import CardDetail from "../pages/detailed";
+
 
 // All routes for navigation
 const AllRoutes = () => {
@@ -25,6 +28,20 @@ const AllRoutes = () => {
         path="/about-us"
         element={
             <AboutUs />
+        }
+      />
+
+      <Route
+        path="/add-card"
+        element={
+            <CreateCard />
+        }
+      />
+
+      <Route
+        path="/link/:id"
+        element={
+            <CardDetail />
         }
       />
     </Routes>

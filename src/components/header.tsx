@@ -14,9 +14,9 @@ const Header = () => {
         </Link>
 
         <div className="list-links">
-          <div onClick={() => navigate("/")}>All Events</div>
+          <div onClick={() => navigate("/")}>All cards</div>
           <div onClick={() => navigate("/favs")}>My favourites</div>
-          <div onClick={() => navigate("/edit-event/-1")}>+Custom thing</div>
+          <div onClick={() => navigate("/add-card")}>+Custom thing</div>
           <div onClick={() => navigate("/about-us")}>About</div>
         </div>
       </div>

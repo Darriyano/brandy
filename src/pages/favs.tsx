@@ -41,7 +41,7 @@ const FavoritesPage: React.FC = () => {
             </div>
           ))
         ) : (
-          <p>Nothing to show :(</p>
+          <p>Nothing to show :</p>
         )}
       </div>
     </>

@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import "../styles/aboutstyles.css";
-import image from "../images/party.jpg";
+import image from "../images/makeup.jpg";
 
 const AboutUs = () => {
   return (

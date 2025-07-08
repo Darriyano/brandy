@@ -1,5 +1,5 @@
-// src/pages/MainPage.tsx
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // импортируем Link для маршрутизации
 import Header from "../components/header";
 import Card, { CardProps } from "../components/card";
 import "../styles/cardstyles.css";
@@ -79,7 +79,9 @@ const MainPage: React.FC = () => {
       <div className="card-list">
         {items.map((c) => (
           <div key={c.id} className="card-wrapper">
-            <Card {...c} />
+            <Link to={`/link/${c.id}`}>
+              <Card {...c} />
+            </Link>
             <button
               className="add-btn"
               onClick={() => handleAdd(c)}

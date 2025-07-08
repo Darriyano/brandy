@@ -1,6 +1,6 @@
-import img1 from "../images/img.png";
-import img2 from "../images/nature.jpg";
-import img3 from "../images/party.jpg";
+import img1 from "../images/img.jpg";
+import img2 from "../images/food.jpg";
+import img3 from "../images/makeup.jpg";
 
 export const images = [
   { id: 1, src: img1, alt: "Image 1" },
