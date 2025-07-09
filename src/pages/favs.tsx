@@ -1,4 +1,3 @@
-// src/pages/FavoritesPage.tsx
 import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Card, { CardProps } from "../components/card";
@@ -9,7 +8,6 @@ const FAVORITES_KEY = "favorites";
 const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<CardProps[]>([]);
 
-  // Загрузка из localStorage
   useEffect(() => {
     const raw = localStorage.getItem(FAVORITES_KEY);
     if (raw) {
@@ -17,7 +15,6 @@ const FavoritesPage: React.FC = () => {
     }
   }, []);
 
-  // Удаление из списка и из localStorage
   const handleRemove = (id: number | string) => {
     const updated = favorites.filter((c) => c.id !== id);
     setFavorites(updated);

@@ -6,7 +6,6 @@ import CreateCard from "../pages/addition";
 import CardDetail from "../pages/detailed";
 
 
-// All routes for navigation
 const AllRoutes = () => {
   return (
     <Routes>

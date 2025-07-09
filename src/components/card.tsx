@@ -10,7 +10,6 @@ export interface CardProps {
   images: string[];
 }
 
-// добавили onAdd как необязательный колбэк
 interface CardWithAddProps extends CardProps {
   onAdd?: (card: CardProps) => void;
 }

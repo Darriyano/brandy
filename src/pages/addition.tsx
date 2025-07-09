@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { images } from "../components/images-array"; // импортируем фото
+import { images } from "../components/images-array";
 import "../styles/newcardstyles.css";
 import Header from "../components/header";
 
-const USER_CARDS_KEY = "userCards"; // Новый ключ для хранения карточек
+const USER_CARDS_KEY = "userCards"; 
 
 const CreateCard: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [imageId, setImageId] = useState<number>(1); // по умолчанию выбрана первая картинка
+  const [imageId, setImageId] = useState<number>(1); 
   const [date, setDate] = useState<string>("");
-  const [cardList, setCardList] = useState<any[]>([]); // для хранения созданных карточек
+  const [cardList, setCardList] = useState<any[]>([]);
 
-  // Загружаем карточки из localStorage при монтировании компонента
   useEffect(() => {
     const savedCards = localStorage.getItem(USER_CARDS_KEY);
     if (savedCards) {
@@ -23,35 +22,29 @@ const CreateCard: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Создаем новую карточку
     const newCard = {
-      id: cardList.length + 1, // уникальный id для карточки
+      id: cardList.length + 1, 
       title,
       description,
       image: images.find((img) => img.id === imageId)?.src,
       date,
     };
 
-    // Обновляем список карточек
     const updatedCards = [...cardList, newCard];
     setCardList(updatedCards);
 
-    // Сохраняем карточки в localStorage с новым ключом
     localStorage.setItem(USER_CARDS_KEY, JSON.stringify(updatedCards));
 
-    // Очищаем поля формы
     setTitle("");
     setDescription("");
     setImageId(1);
     setDate("");
   };
 
-  // Удаление карточки из списка и из localStorage
   const handleDelete = (id: number) => {
     const updatedCards = cardList.filter((card) => card.id !== id);
     setCardList(updatedCards);
 
-    // Сохраняем обновлённый список карточек в localStorage
     localStorage.setItem(USER_CARDS_KEY, JSON.stringify(updatedCards));
   };
 

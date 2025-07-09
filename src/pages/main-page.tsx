@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // импортируем Link для маршрутизации
+import { Link } from "react-router-dom"; 
 import Header from "../components/header";
 import Card, { CardProps } from "../components/card";
 import "../styles/cardstyles.css";
 
 const FAVORITES_KEY = "favorites";
-const DUMMY_CARDS_KEY = "dummyCards"; // Новый ключ для хранения данных из dummyjson
+const DUMMY_CARDS_KEY = "dummyCards"; 
 
 const MainPage: React.FC = () => {
   const [items, setItems] = useState<CardProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Загружаем данные из dummyjson
+
   useEffect(() => {
     const fetchData = async () => {
       try {
