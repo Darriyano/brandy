@@ -4,6 +4,10 @@ import Header from '../components/header';
 import Card, { CardProps } from '../components/card';
 import '../styles/cardstyles.css';
 
+// Импортируем компонент и стили для уведомлений
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const FAVORITES_KEY = 'favorites';
 const DUMMY_CARDS_KEY = 'dummyCards';
 
@@ -51,9 +55,11 @@ const MainPage: React.FC = () => {
     const existing: CardProps[] = raw ? JSON.parse(raw) : [];
     if (!existing.find((c) => c.id === card.id)) {
       localStorage.setItem(FAVORITES_KEY, JSON.stringify([...existing, card]));
-      alert(`«${card.title}» добавлен в избранное`);
+      // Показываем уведомление о добавлении в избранное
+      toast.success(`«${card.title}» добавлен в избранное!`);
     } else {
-      alert(`«${card.title}» уже в избранном`);
+      // Показываем уведомление, что карточка уже в избранном
+      toast.info(`«${card.title}» уже в избранном!`);
     }
   };
 
@@ -61,7 +67,7 @@ const MainPage: React.FC = () => {
     return (
       <>
         <Header />
-        <div className="card-list">Wait...We're looking for our goods</div>
+        <div className="card-list">Wait...We are looking for our goods</div>
       </>
     );
   }
@@ -70,7 +76,7 @@ const MainPage: React.FC = () => {
       <>
         <Header />
         <div className="card-list">
-          Oops, we're came across the error: {error}
+          Oops, we are came across the error: {error}
         </div>
       </>
     );
@@ -95,6 +101,9 @@ const MainPage: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Добавляем контейнер для уведомлений */}
+      <ToastContainer />
     </>
   );
 };
