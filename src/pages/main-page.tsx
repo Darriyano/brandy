@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from '../components/header';
 import Card, { CardProps } from '../components/card';
 import '../styles/cardstyles.css';
-
-// Импортируем компонент и стили для уведомлений
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

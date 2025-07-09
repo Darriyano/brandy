@@ -5,7 +5,6 @@ import Header from '../components/header';
 
 const USER_CARDS_KEY = 'userCards';
 
-// Интерфейс для ошибки формы
 interface FormErrors {
   title?: string;
   description?: string;
@@ -13,12 +12,11 @@ interface FormErrors {
   date?: string;
 }
 
-// Интерфейс для карточки
 interface Card {
   id: number;
   title: string;
   description: string;
-  image: string; // Используем строку, так как это URL изображения
+  image: string;
   date: string;
 }
 
@@ -27,8 +25,8 @@ const CreateCard: React.FC = () => {
   const [description, setDescription] = useState<string>('');
   const [imageId, setImageId] = useState<number>(1);
   const [date, setDate] = useState<string>('');
-  const [cardList, setCardList] = useState<Card[]>([]); // Используем тип для списка карточек
-  const [errors, setErrors] = useState<FormErrors>({}); // Используем тип для ошибок
+  const [cardList, setCardList] = useState<Card[]>([]);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
     const savedCards = localStorage.getItem(USER_CARDS_KEY);
@@ -39,7 +37,7 @@ const CreateCard: React.FC = () => {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    if (!title.trim()) newErrors.title = 'Title is required'; // Используем двойные кавычки
+    if (!title.trim()) newErrors.title = 'Title is required';
     if (!description.trim()) newErrors.description = 'Description is required';
     if (!date) newErrors.date = 'Publication date is required';
     if (!imageId) newErrors.imageId = 'Please select an image';
