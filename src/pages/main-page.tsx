@@ -6,6 +6,7 @@ import '../styles/cardstyles.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+/* Constannt keys to store data in localstorage */
 const FAVORITES_KEY = 'favorites';
 const DUMMY_CARDS_KEY = 'dummyCards';
 
@@ -15,6 +16,7 @@ const MainPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    /* Function to upload data from the dummyjson into localstorage and save them in a hook for a while*/
     const fetchData = async () => {
       try {
         const res = await fetch('https://dummyjson.com/products');
@@ -28,9 +30,9 @@ const MainPage: React.FC = () => {
           }>;
         };
 
-        // Сохраняем данные в localStorage
         localStorage.setItem(DUMMY_CARDS_KEY, JSON.stringify(products));
 
+        /* Using hook useState to save fetched items */
         setItems(
           products.map((p) => ({
             id: p.id,
@@ -48,19 +50,19 @@ const MainPage: React.FC = () => {
     fetchData();
   }, []);
 
+  /* Function to add one card into favourites */
   const handleAdd = (card: CardProps) => {
     const raw = localStorage.getItem(FAVORITES_KEY);
     const existing: CardProps[] = raw ? JSON.parse(raw) : [];
     if (!existing.find((c) => c.id === card.id)) {
       localStorage.setItem(FAVORITES_KEY, JSON.stringify([...existing, card]));
-      // Показываем уведомление о добавлении в избранное
       toast.success(`«${card.title}» добавлен в избранное!`);
     } else {
-      // Показываем уведомление, что карточка уже в избранном
       toast.info(`«${card.title}» уже в избранном!`);
     }
   };
 
+  /* If loading is active - waiting fo data from dummyjson to fetch */
   if (loading) {
     return (
       <>
@@ -69,6 +71,8 @@ const MainPage: React.FC = () => {
       </>
     );
   }
+
+  /* If error was thrown */
   if (error) {
     return (
       <>
@@ -80,12 +84,14 @@ const MainPage: React.FC = () => {
     );
   }
 
+  /* If eveerything is okay and we can show all fetched data */
   return (
     <>
       <Header />
       <div className="card-list">
         {items.map((c) => (
           <div key={c.id} className="card-wrapper">
+            {/* Unique dynamic URL for each card - aafter click redirecting to details */}
             <Link to={`/link/${c.id}`}>
               <Card {...c} />
             </Link>
@@ -100,7 +106,6 @@ const MainPage: React.FC = () => {
         ))}
       </div>
 
-      {/* Добавляем контейнер для уведомлений */}
       <ToastContainer />
     </>
   );

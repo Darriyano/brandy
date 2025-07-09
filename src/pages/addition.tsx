@@ -5,6 +5,7 @@ import Header from '../components/header';
 
 const USER_CARDS_KEY = 'userCards';
 
+/* Data structures to store information */
 interface FormErrors {
   title?: string;
   description?: string;
@@ -21,6 +22,7 @@ interface Card {
 }
 
 const CreateCard: React.FC = () => {
+  /* Hook UseState to save entered information before pushing it into the storage */
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [imageId, setImageId] = useState<number>(1);
@@ -28,6 +30,7 @@ const CreateCard: React.FC = () => {
   const [cardList, setCardList] = useState<Card[]>([]);
   const [errors, setErrors] = useState<FormErrors>({});
 
+  /* After loading the page placing user cards from storage if have any */
   useEffect(() => {
     const savedCards = localStorage.getItem(USER_CARDS_KEY);
     if (savedCards) {
@@ -35,17 +38,36 @@ const CreateCard: React.FC = () => {
     }
   }, []);
 
+  /* Validation for the form: user cannot save empty fields, some info must be entered not to cause problems */
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    if (!title.trim()) newErrors.title = 'Title is required';
-    if (!description.trim()) newErrors.description = 'Description is required';
-    if (!date) newErrors.date = 'Publication date is required';
-    if (!imageId) newErrors.imageId = 'Please select an image';
+
+    if (!title.trim()) {
+      newErrors.title = 'Title is required';
+    } else if (title.trim().length < 3) {
+      newErrors.title = 'Title must be at least 3 characters long';
+    }
+
+    if (!description.trim()) {
+      newErrors.description = 'Description is required';
+    } else if (description.trim().length < 3) {
+      newErrors.description = 'Description must be at least 3 characters long';
+    }
+
+    if (!date) {
+      newErrors.date = 'Publication date is required';
+    } else {
+      const year = new Date(date).getFullYear();
+      if (year < 1900 || year > 2050) {
+        newErrors.date = 'Publication date must be between 1900 and 2050';
+      }
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  /* If data is correct, forming new user card and saving it into the localstorage*/
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -66,12 +88,14 @@ const CreateCard: React.FC = () => {
 
     localStorage.setItem(USER_CARDS_KEY, JSON.stringify(updatedCards));
 
+    /* After saving, reset the states */
     setTitle('');
     setDescription('');
     setImageId(1);
     setDate('');
   };
 
+  /* Choosing all cards (excluding chosen one) and updating the card list in storage */
   const handleDelete = (id: number) => {
     const updatedCards = cardList.filter((card) => card.id !== id);
     setCardList(updatedCards);
@@ -84,6 +108,7 @@ const CreateCard: React.FC = () => {
       <Header />
       <div className="create-card2">
         <h2>Create a New Card</h2>
+        {/* Form with input, textarea, radio buttons and date input */}
         <form onSubmit={handleSubmit} className="create-card2-form">
           <div className="form-group">
             <label htmlFor="title">Title</label>
@@ -94,6 +119,7 @@ const CreateCard: React.FC = () => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter title"
             />
+            {/* If validation error, show the message */}
             {errors.title && <span className="error">{errors.title}</span>}
           </div>
 
@@ -106,6 +132,7 @@ const CreateCard: React.FC = () => {
               placeholder="Enter description"
               maxLength={200}
             />
+            {/* If validation error, show the message */}
             {errors.description && (
               <span className="error">{errors.description}</span>
             )}
@@ -131,6 +158,7 @@ const CreateCard: React.FC = () => {
                 </label>
               ))}
             </div>
+            {/* If validation error, show the message */}
             {errors.imageId && <span className="error">{errors.imageId}</span>}
           </div>
 
@@ -142,6 +170,7 @@ const CreateCard: React.FC = () => {
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
+            {/* If validation error, show the message */}
             {errors.date && <span className="error">{errors.date}</span>}
           </div>
 
@@ -149,6 +178,7 @@ const CreateCard: React.FC = () => {
         </form>
 
         <div className="card2-list">
+          {/* Going through the array element by element and showing them in the screen */}
           {cardList.map((card) => (
             <div key={card.id} className="card2">
               <img src={card.image} alt={card.title} className="card2-image" />

@@ -36,9 +36,7 @@ const AboutUs = () => {
             checkout.
             <br />
             <br />
-            <a href="https://github.com/scruffyscarf">
-              Link to the developer`s GitHub!
-            </a>
+            <a href="https://github.com/scruffyscarf">Link to the GitHub!</a>
           </span>
         </div>
       </div>

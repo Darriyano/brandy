@@ -8,6 +8,7 @@ const FAVORITES_KEY = 'favorites';
 const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<CardProps[]>([]);
 
+  /* Right after the loading page taking data from storage */
   useEffect(() => {
     const raw = localStorage.getItem(FAVORITES_KEY);
     if (raw) {
@@ -15,6 +16,7 @@ const FavoritesPage: React.FC = () => {
     }
   }, []);
 
+  /* Choosing all cards (excluding chosen one) and updating the card list in storage */
   const handleRemove = (id: number | string) => {
     const updated = favorites.filter((c) => c.id !== id);
     setFavorites(updated);
@@ -35,7 +37,7 @@ const FavoritesPage: React.FC = () => {
             </div>
           ))
         ) : (
-          <p>Nothing to show :</p>
+          <p>Nothing to show...</p>
         )}
       </div>
     </>

@@ -5,9 +5,11 @@ import '../styles/detailed.css';
 import Header from '../components/header';
 
 const CardDetail: React.FC = () => {
+  /* Hook to give us dynamic ID + cards array from storage*/
   const { id } = useParams<{ id: string }>();
   const [card, setCard] = useState<CardProps | null>(null);
 
+  /* Hook to fetch data right after the page loading */
   useEffect(() => {
     const fetchCard = async () => {
       const savedCards = localStorage.getItem('dummyCards');
