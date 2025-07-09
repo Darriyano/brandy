@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom"; 
-import { CardProps } from "../components/card"; 
-import "../styles/detailed.css"; 
-import Header from "../components/header";
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { CardProps } from '../components/card';
+import '../styles/detailed.css';
+import Header from '../components/header';
 
 const CardDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); 
+  const { id } = useParams<{ id: string }>();
   const [card, setCard] = useState<CardProps | null>(null);
 
   useEffect(() => {
     const fetchCard = async () => {
-      const savedCards = localStorage.getItem("dummyCards"); 
+      const savedCards = localStorage.getItem('dummyCards');
       if (savedCards) {
         const cards: CardProps[] = JSON.parse(savedCards);
         const selectedCard = cards.find((card) => card.id.toString() === id);
@@ -19,10 +19,10 @@ const CardDetail: React.FC = () => {
     };
 
     fetchCard();
-  }, [id]); 
+  }, [id]);
 
   if (!card) {
-    return <div>Card not found!</div>; 
+    return <div>Card not found!</div>;
   }
 
   return (

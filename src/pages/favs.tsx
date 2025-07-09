@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/header";
-import Card, { CardProps } from "../components/card";
-import "../styles/cardstyles.css";
+import React, { useEffect, useState } from 'react';
+import Header from '../components/header';
+import Card, { CardProps } from '../components/card';
+import '../styles/cardstyles.css';
 
-const FAVORITES_KEY = "favorites";
+const FAVORITES_KEY = 'favorites';
 
 const FavoritesPage: React.FC = () => {
   const [favorites, setFavorites] = useState<CardProps[]>([]);
@@ -29,10 +29,7 @@ const FavoritesPage: React.FC = () => {
           favorites.map((c) => (
             <div key={c.id} className="card-wrapper">
               <Card {...c} />
-              <button
-                className="remove-btn"
-                onClick={() => handleRemove(c.id)}
-              >
+              <button className="remove-btn" onClick={() => handleRemove(c.id)}>
                 Delete card
               </button>
             </div>

@@ -11,9 +11,8 @@
   flex-direction: column;
   height: 42vh;
   padding-top: 24px;
-padding-bottom: 24px;
-  text-decoration: none;  
-
+  padding-bottom: 24px;
+  text-decoration: none;
 }
 
 .card:hover {
@@ -35,18 +34,17 @@ padding-bottom: 24px;
   flex: 1;
   padding: 1.5rem;
   box-sizing: border-box;
-  text-decoration: none;  
-
+  text-decoration: none;
 }
 
 a {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .card-title {
   font-size: 1.3rem;
   font-weight: bold;
-    text-decoration: none; 
+  text-decoration: none;
   margin: 0 0 1rem;
 }
 
@@ -54,7 +52,7 @@ a {
   font-size: 0.95rem;
   color: #5e5e5e;
   margin: 0 0 1rem;
-  text-decoration: none;  
+  text-decoration: none;
   flex: 1;
   overflow: auto;
 }
@@ -92,9 +90,9 @@ a {
 }
 
 .remove-btn {
-  align-self: stretch;     
-  margin-top: 1rem;        
-  padding: 0.75rem 1rem;   
+  align-self: stretch;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
   background-color: #f07859;
   margin: 1rem;
   color: #fff;
@@ -104,7 +102,7 @@ a {
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s ease;
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 
 .remove-btn:hover {

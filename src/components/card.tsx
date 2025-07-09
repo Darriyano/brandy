@@ -1,7 +1,7 @@
 // src/components/card.tsx
-import React from "react";
-import "../styles/cardstyles.css";
-import defaultImg from "../images/img.jpg";
+import React from 'react';
+import '../styles/cardstyles.css';
+import defaultImg from '../images/img.jpg';
 
 export interface CardProps {
   id: number | string;

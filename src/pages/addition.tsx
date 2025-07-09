@@ -1,16 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { images } from "../components/images-array";
-import "../styles/newcardstyles.css";
-import Header from "../components/header";
+import React, { useState, useEffect } from 'react';
+import { images } from '../components/images-array';
+import '../styles/newcardstyles.css';
+import Header from '../components/header';
 
-const USER_CARDS_KEY = "userCards"; 
+const USER_CARDS_KEY = 'userCards';
+
+// Интерфейс для ошибки формы
+interface FormErrors {
+  title?: string;
+  description?: string;
+  imageId?: string;
+  date?: string;
+}
+
+// Интерфейс для карточки
+interface Card {
+  id: number;
+  title: string;
+  description: string;
+  image: string; // Используем строку, так как это URL изображения
+  date: string;
+}
 
 const CreateCard: React.FC = () => {
-  const [title, setTitle] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [imageId, setImageId] = useState<number>(1); 
-  const [date, setDate] = useState<string>("");
-  const [cardList, setCardList] = useState<any[]>([]);
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [imageId, setImageId] = useState<number>(1);
+  const [date, setDate] = useState<string>('');
+  const [cardList, setCardList] = useState<Card[]>([]); // Используем тип для списка карточек
+  const [errors, setErrors] = useState<FormErrors>({}); // Используем тип для ошибок
 
   useEffect(() => {
     const savedCards = localStorage.getItem(USER_CARDS_KEY);
@@ -19,14 +37,29 @@ const CreateCard: React.FC = () => {
     }
   }, []);
 
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!title.trim()) newErrors.title = 'Title is required'; // Используем двойные кавычки
+    if (!description.trim()) newErrors.description = 'Description is required';
+    if (!date) newErrors.date = 'Publication date is required';
+    if (!imageId) newErrors.imageId = 'Please select an image';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newCard = {
-      id: cardList.length + 1, 
+    if (!validateForm()) {
+      return;
+    }
+
+    const newCard: Card = {
+      id: cardList.length + 1,
       title,
       description,
-      image: images.find((img) => img.id === imageId)?.src,
+      image: images.find((img) => img.id === imageId)?.src || '',
       date,
     };
 
@@ -35,10 +68,10 @@ const CreateCard: React.FC = () => {
 
     localStorage.setItem(USER_CARDS_KEY, JSON.stringify(updatedCards));
 
-    setTitle("");
-    setDescription("");
+    setTitle('');
+    setDescription('');
     setImageId(1);
-    setDate("");
+    setDate('');
   };
 
   const handleDelete = (id: number) => {
@@ -62,8 +95,8 @@ const CreateCard: React.FC = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter title"
-              required
             />
+            {errors.title && <span className="error">{errors.title}</span>}
           </div>
 
           <div className="form-group">
@@ -74,8 +107,10 @@ const CreateCard: React.FC = () => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter description"
               maxLength={200}
-              required
             />
+            {errors.description && (
+              <span className="error">{errors.description}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -93,11 +128,12 @@ const CreateCard: React.FC = () => {
                   <img
                     src={image.src}
                     alt={`Image ${image.id}`}
-                    className={`image-thumbnail ${image.id === imageId ? "selected" : ""}`}
+                    className={`image-thumbnail ${image.id === imageId ? 'selected' : ''}`}
                   />
                 </label>
               ))}
             </div>
+            {errors.imageId && <span className="error">{errors.imageId}</span>}
           </div>
 
           <div className="form-group">
@@ -107,8 +143,8 @@ const CreateCard: React.FC = () => {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              required
             />
+            {errors.date && <span className="error">{errors.date}</span>}
           </div>
 
           <button type="submit">Create Card</button>
@@ -117,16 +153,14 @@ const CreateCard: React.FC = () => {
         <div className="card2-list">
           {cardList.map((card) => (
             <div key={card.id} className="card2">
-              <img
-                src={card.image}
-                alt={card.title}
-                className="card2-image"
-              />
+              <img src={card.image} alt={card.title} className="card2-image" />
               <div className="card2-content">
                 <h2>{card.title}</h2>
                 <p>{card.description}</p>
-                <p><strong>Published on:</strong> {card.date}</p>
-                <button 
+                <p>
+                  <strong>Published on:</strong> {card.date}
+                </p>
+                <button
                   className="remove-btn2"
                   onClick={() => handleDelete(card.id)}
                 >
